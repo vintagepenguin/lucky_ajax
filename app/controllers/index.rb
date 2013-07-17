@@ -11,5 +11,9 @@ post '/rolls' do
 
   @roll = value ? Roll.create({ value: value }) : Roll.create
 
-  erb :index  # HINT: what does this do? what should we do instead?
+  if request.xhr?
+    erb :index, :layout => false  # HINT: what does this do? what should we do instead?
+  else
+    erb :index
+  end    
 end
